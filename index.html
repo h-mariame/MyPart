@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.css" charset="utf-8">
+		<script src="js/jquery-1.7.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/underscore-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone-0.5.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.localStorage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.0rc2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+                
+                <script src="js/geolocalisation.js" type="text/javascript" charset="utf-8"></script>
+                <!-- <script src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script> -->
+
+	</head>
+	<body>
+		<div id="#authentification" data-role="page">
+
+			<div data-role="header">
+				<h1>I'm Here</h1>
+			</div>
+
+			<div id="" data-role="content">
+				<form name="seconnecterform" action="#" method="post">
+					<div data-role="fieldcontain">
+						<label for="user">Username:</label>
+						<input name="user" id="user" value=""/>
+					</div>	
+					<div data-role="fieldcontain">
+						<label for="mdp">Password:</label>
+						<input name="mdp" type="password" id="mdp" value=""/>
+					</div>
+					
+					<a href="#connecter" data-rel="" OnClick="SeConnecter()" data-theme="b" data-role="button" class="ui-btn-right">Log in</a>
+					
+					<!--input type=checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+					<!--label for="checkbox-1">Remember me</label-->
+					
+				</form>
+			
+			<a href="#signup" data-rel="dialog" data-role="button" data-theme="b" class="ui-btn-right">Create account</a>
+			</div>	
+			<div data-role="footer">
+				<h2>Copyright I'm Here &copy;</h2> <h5 date-inline="true"> Version 1.0</h5>
+			</div>
+
+		</div>
+		
+		<div id="signup" data-role="page" data-theme="b" >
+			<div data-role="header">
+				<h1>Sign Up</h1>
+			</div>
+			<div data-role="content">
+                            <form name="newuserform" method ="post" >
+					<div date-role="filedcontain">
+						<label for="username">Username :</label>
+						<input id="username" name="username" value=""/>
+					</div>
+					<div date-role="filedcontain">
+						<label for="pwd">Password :</label>
+						<input id="pwd" type="password" name="pwd" value=""/>
+					</div>
+					<div date-role="filedcontain">
+						<label for="cpwd">Confirm Password :</label>
+						<input id="cpwd" type="password" name="cpwd" value=""/>
+					</div>
+					<div id="">
+						<button data-icon="check" type ="Submit" data-theme="b" value="Submit">Create</button>
+						<button data-icon="delete" data-theme="b" type ="Cancel">Cancel</button>					
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<div id="connecter" data-role="page" data-theme="c">
+                  
+			<div data-role="header">
+				<h1>Menu</h1>
+				<a href="#home" data-role="button" data-icon="back" style="visibility :hidden" class="ui-btn-left" data-theme="b">Back</a>
+				<a href="#authentification" data-role="button" OnClick="SeDeconnecter()" data-icon="arrow-u" class="ui-btn-right" data-theme="b">Log out</a>
+			</div>
+			<div data-role="content">
+				<form name ="menuform">
+					<div id ="generate">
+						Generate a Tiny URL and show my position :
+						<a href="#MyPosUser" data-rel="" data-theme="b" OnClick="LocaliserMoi()" data-role="button" class="ui-btn-right">Where am I ?</a>
+
+                                        </div>
+					<div date-role="filedcontain">
+						<label for="cpwd">Paste the Tiny URL here :</label>
+						<input id="cpwd" name="cpwd" value=""/>
+					</div>
+					<div id ="">
+						<a href="#friendPos" OnClick="Whereareyou()" data-rel="" data-theme="b" data-role="button" class="ui-btn-right">Where are you ?</a>
+						<!--button data-icon="check" data-theme="b">Where is it ?</button-->
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<div id="MyPosUser" data-role="page" data-theme="c">
+			<div data-role="header">
+				<h1>My position</h1>
+				<a href="#connecter" data-role="button" data-icon="back" class="ui-btn-left" data-theme="b">Back</a>
+				<a href="#authentification" data-role="button" data-icon="arrow-u" OnClick="SeDeconnecter()" class="ui-btn-right" data-theme="b">Log out</a>
+			</div>
+			<div data-role="content">
+                            <form name="tinyform">
+					<div date-role="filedcontain">
+						<label for="tinyurluser">Copy and send the Tiny URL</label>
+						
+						<!-- ajouter une balise qui permet d'afficher etpouvoir copier le tiny url-->
+						<textarea id="tinyurluser" name="tinyurluser" value=""></textarea>
+					</div>
+					<div id ="Userposition" style="height:500px;">
+						<!--button data-icon="check" data-theme="b">See the friend position</button-->
+						<!--a href="#MyPos" data-role="button" data-theme="b" > Show my position </a-->
+					</div>
+                            </form>
+			</div>
+		</div>
+				
+		<div id="friendPos" data-role="page" data-theme="c">
+			<div data-role="header">
+				<h1>Friend position</h1>
+				<a href="#connecter" data-role="button" data-icon="back" class="ui-btn-left" data-theme="b">Back</a>
+				<a href="#authentification" data-role="button" data-icon="arrow-u" OnClick="SeDeconnecter()" class="ui-btn-right" data-theme="b">Log out</a>
+			</div>
+			<div id="FriendPosition" data-role="content" style="height:500px;">
+				<!-- Afficher ici la carte et la position de l'ami(e)-->
+
+			</div>
+			<div data-role="footer" >
+				<h1><a href="#calcItinerary" OnClick="CalculerItin()" data-role="button" data-theme="b" > Itinerary</a></h1>
+			</div>
+		</div>
+		
+		<div id="calcItinerary" data-role="page" data-theme="c">
+			<div data-role="header">
+				<h1>Itinerary to join a friend</h1>
+				<a href="#friendPos" data-role="button" data-icon="back" class="ui-btn-left" data-theme="b">Back</a>
+				<a href="#authentification" data-role="button" data-icon="arrow-u" OnClick="SeDeconnecter()" class="ui-btn-right" data-theme="b">Log out</a>
+			</div>
+			<div  id="FrienItinerary" data-role="content" style="height:500px; width:1300px; margin-left: 10px;">
+					<!-- Afficher ici la carte de l'itineraire-->			
+			</div>
+		</div>
+	</body>
+</html>
